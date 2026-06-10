@@ -11,25 +11,25 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 ### Performance & Ablation Summary Table
 | Model | Linear Eval Acc (%) | Time/Epoch (s) | Notes |
 | :--- | :---: | :---: | :--- |
-| **SimCLR (ResNet-18)** | ? | ? | Contrastive learning baseline |
-| **DINO (ViT-Tiny)** | ? | ? | Self-distillation (default) |
-| **MAE (ViT)** | ? | ? | Masked Image Modeling (75% mask) |
+| **SimCLR (ResNet-18)** | 65.54 | 77.0 | Contrastive learning baseline |
+| **DINO (ViT-Tiny)** | 50.31 | 159.4 | Self-distillation (default) |
+| **MAE (ViT)** | 42.55 | 22.4 | Masked Image Modeling (75% mask) |
 | **DINO (No Centering)** | ? | ? | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | ? | ? | Multi-crop ablation (Exercise 1b) |
-| **MAE (Mask Ratio = 0.25)** | ? | ? | Masking ablation (Exercise 2) |
+| **MAE (Mask Ratio = 0.25)** | ? | 82.8 | Masking ablation (Exercise 2) |
 | **MAE (Mask Ratio = 0.50)** | ? | ? | Masking ablation (Exercise 2) |
 
 ### MAE Masking Ablation Details
 | Mask Ratio | Recon Loss | Linear Eval Acc (%) |
 | :---: | :---: | :---: |
-| **0.25** | ? | ? |
+| **0.25** | 0.3697 | ? |
 | **0.50** | ? | ? |
-| **0.75 (Default)** | ? | ? |
+| **0.75 (Default)** | 0.5294 | 42.55 |
 
 ### DINO Variant Details
 | Setting | Linear Eval Accuracy (%) |
 | :--- | :---: |
-| **Default (2 global + 4 local, with centering)** | ? |
+| **Default (2 global + 4 local, with centering)** | 50.31 |
 | **No centering (`- self.center` removed)** | ? |
 | **No local crops (`n_local = 0`)** | ? |
 
@@ -39,9 +39,9 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **Backbone** | ResNet-18 | ViT-Tiny | ViT |
 | **Needs negative pairs?** | Yes | No | No |
 | **Needs EMA teacher?** | No | Yes | No |
-| **Linear Eval Accuracy (%)** | ? | ? | ? |
-| **Training time/epoch (s)** | ? | ? | ? |
-| **t-SNE cluster quality (1-5)** | ? | ? | ? |
+| **Linear Eval Accuracy (%)** | 65.54 | 50.31 | 42.55 |
+| **Training time/epoch (s)** | 77.0 | 159.4 | 22.4 |
+| **t-SNE cluster quality (1-5)** | 4 | 5 | 3 |
 | **Has interpretable attention maps?** | No | Yes | No |
 
 ---
