@@ -16,13 +16,13 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **MAE (ViT)** | 42.55 | 22.4 | Masked Image Modeling (75% mask) |
 | **DINO (No Centering)** | ? | ? | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | ? | ? | Multi-crop ablation (Exercise 1b) |
-| **MAE (Mask Ratio = 0.25)** | ? | 82.8 | Masking ablation (Exercise 2) |
+| **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
 | **MAE (Mask Ratio = 0.50)** | ? | ? | Masking ablation (Exercise 2) |
 
 ### MAE Masking Ablation Details
 | Mask Ratio | Recon Loss | Linear Eval Acc (%) |
 | :---: | :---: | :---: |
-| **0.25** | 0.3697 | ? |
+| **0.25** | 0.3697 | 36.08 |
 | **0.50** | ? | ? |
 | **0.75 (Default)** | 0.5294 | 42.55 |
 
