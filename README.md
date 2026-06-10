@@ -17,13 +17,13 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **DINO (No Centering)** | ? | ? | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | ? | ? | Multi-crop ablation (Exercise 1b) |
 | **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
-| **MAE (Mask Ratio = 0.50)** | ? | 73.2 | Masking ablation (Exercise 2) |
+| **MAE (Mask Ratio = 0.50)** | 36.50 | 73.2 | Masking ablation (Exercise 2) |
 
 ### MAE Masking Ablation Details
 | Mask Ratio | Recon Loss | Linear Eval Acc (%) |
 | :---: | :---: | :---: |
 | **0.25** | 0.3697 | 36.08 |
-| **0.50** | 0.4471 | ? |
+| **0.50** | 0.4471 | 36.50 |
 | **0.75 (Default)** | 0.5294 | 42.55 |
 
 ### DINO Variant Details
