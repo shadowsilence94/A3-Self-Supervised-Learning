@@ -13,7 +13,7 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | :--- | :---: | :---: | :--- |
 | **SimCLR (ResNet-18)** | 65.54 | 77.0 | Contrastive learning baseline |
 | **DINO (ViT-Tiny)** | 50.31 | 159.4 | Self-distillation (default) |
-| **MAE (ViT)** | 42.55 | 22.4 | Masked Image Modeling (75% mask) |
+| **MAE (ViT)** | 41.37 | 22.4 | Masked Image Modeling (75% mask) |
 | **DINO (No Centering)** | 28.68 | 1026.4 | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | 46.31 | 509.8 | Multi-crop ablation (Exercise 1b) |
 | **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
@@ -24,7 +24,7 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | :---: | :---: | :---: |
 | **0.25** | 0.3697 | 36.08 |
 | **0.50** | 0.4471 | 36.50 |
-| **0.75 (Default)** | 0.5294 | 42.55 |
+| **0.75 (Default)** | 0.5294 | 41.37 |
 
 ### DINO Variant Details
 | Setting | Linear Eval Accuracy (%) |
@@ -39,7 +39,7 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **Backbone** | ResNet-18 | ViT-Tiny | ViT |
 | **Needs negative pairs?** | Yes | No | No |
 | **Needs EMA teacher?** | No | Yes | No |
-| **Linear Eval Accuracy (%)** | 65.54 | 50.31 | 42.55 |
+| **Linear Eval Accuracy (%)** | 65.54 | 50.31 | 41.37 |
 | **Training time/epoch (s)** | 77.0 | 159.4 | 22.4 |
 | **t-SNE cluster quality (1-5)** | 4 | 5 | 3 |
 | **Has interpretable attention maps?** | No | Yes | No |
@@ -75,11 +75,11 @@ Comparative 2D t-SNE projections of the learned representation space for all thr
 ## 3. Discussion & Analysis
 
 ### Exercise 1b: DINO Centering & Multi-crop Analysis
-*   **Why removing centering causes collapse:** Without centering, the teacher network quickly collapses to a one-hot output dominated by a single dimension. The student network simply replicates this constant representation, leading to complete representation collapse (accuracy drops to ?%).
-*   **Why removing local crops hurts representation quality:** Removing local crops (`n_local=0`) simplifies the self-distillation task. Without local-to-global matching, the model is not regularized to learn fine-grained spatial representations, dropping accuracy from 50.31% to ?%.
+*   **Why removing centering causes collapse:** Without centering, the teacher network quickly collapses to a one-hot output dominated by a single dimension. The student network simply replicates this constant representation, leading to complete representation collapse (accuracy drops to 28.68%).
+*   **Why removing local crops hurts representation quality:** Removing local crops (`n_local=0`) simplifies the self-distillation task. Without local-to-global matching, the model is not regularized to learn fine-grained spatial representations, dropping accuracy from 50.31% to 46.31%.
 
 ### Exercise 2: MAE Masking Ratio Analysis
-*   **Why low masking produces worse representations despite lower reconstruction loss:** At 25% masking, the encoder easily reconstructs patches by interpolating adjacent pixels (memorizing local textures), yielding a low reconstruction loss but poor representation quality (36.08%). Masking 75% destroys local spatial continuity, forcing the encoder to learn global semantic abstractions (42.55%).
+*   **Why low masking produces worse representations despite lower reconstruction loss:** At 25% masking, the encoder easily reconstructs patches by interpolating adjacent pixels (memorizing local textures), yielding a low reconstruction loss but poor representation quality (36.08%). Masking 75% destroys local spatial continuity, forcing the encoder to learn global semantic abstractions (41.37%).
 
 ### Exercise 3a: MAE vs DINO for Large-Scale Pre-training
 *   **Why MAE won out over DINO for large-scale pre-training:** MAE only encodes visible patches (25%), saving 3x-4x compute and memory. It also uses simple MSE loss without teacher-student synchronization, making it highly stable at scale.

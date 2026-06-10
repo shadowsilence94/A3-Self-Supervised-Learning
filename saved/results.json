@@ -93,7 +93,7 @@
       23.834864854812622
     ],
     "total_time_min": 3.7252302964528403,
-    "linear_eval_acc": 42.55
+    "linear_eval_acc": 41.37
   },
   "mae_mask_0.25": {
     "train_loss": [

@@ -596,6 +596,8 @@ if __name__ == '__main__':
             test_acc = 100 * correct / total
             print(f'\n✅ SimCLR Linear Eval Test Accuracy: {test_acc:.2f}%')
             
+            simclr_embeddings = torch.cat(simclr_embeddings, dim=0)
+            simclr_labels = torch.cat(simclr_labels, dim=0)
             torch.save(simclr_embeddings, 'saved/simclr_embeddings.pt')
             torch.save(simclr_labels, 'saved/simclr_labels.pt')
             
@@ -816,6 +818,8 @@ if __name__ == '__main__':
             test_acc = 100 * correct / total
             print(f'\n✅ DINO Linear Eval Test Accuracy: {test_acc:.2f}%')
             
+            dino_embeddings = torch.cat(dino_embeddings, dim=0)
+            dino_labels = torch.cat(dino_labels, dim=0)
             torch.save(dino_embeddings, 'saved/dino_embeddings.pt')
             torch.save(dino_labels, 'saved/dino_labels.pt')
             
@@ -1082,6 +1086,8 @@ if __name__ == '__main__':
             test_acc = 100 * correct / total
             print(f'\n✅ MAE Linear Eval Test Accuracy: {test_acc:.2f}%')
             
+            mae_embeddings = torch.cat(mae_embeddings, dim=0)
+            mae_labels_list = torch.cat(mae_labels_list, dim=0)
             torch.save(mae_embeddings, 'saved/mae_embeddings.pt')
             torch.save(mae_labels_list, 'saved/mae_labels.pt')
             
