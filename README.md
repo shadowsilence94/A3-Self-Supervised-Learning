@@ -14,7 +14,7 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **SimCLR (ResNet-18)** | 65.54 | 77.0 | Contrastive learning baseline |
 | **DINO (ViT-Tiny)** | 50.31 | 159.4 | Self-distillation (default) |
 | **MAE (ViT)** | 42.55 | 22.4 | Masked Image Modeling (75% mask) |
-| **DINO (No Centering)** | ? | ? | Centering ablation (Exercise 1a) |
+| **DINO (No Centering)** | ? | 1026.4 | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | ? | ? | Multi-crop ablation (Exercise 1b) |
 | **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
 | **MAE (Mask Ratio = 0.50)** | 36.50 | 73.2 | Masking ablation (Exercise 2) |
