@@ -51,7 +51,7 @@ The following figures were generated automatically from my training and evaluati
 
 ### Loss Curves Comparison
 Side-by-side training loss curves for DINO and MAE:
-![Loss Curves](./saved/loss_curves.png)
+![Loss Curves](./saved/loss_curves_v2.png)
 
 ### DINO Center Norm Tracking
 Tracking of the DINO center vector norm across epochs for default DINO vs. DINO without centering:
@@ -67,7 +67,7 @@ Self-attention maps of the `[CLS]` token from the last block of my trained DINO 
 
 ### t-SNE Embedding Projections
 Comparative 2D t-SNE projections of the learned representation space for DINO vs MAE:
-![t-SNE Comparison](./saved/tsne_comparison.png)
+![t-SNE Comparison](./saved/tsne_comparison_v2.png)
 
 ---
 
@@ -102,4 +102,4 @@ Comparative 2D t-SNE projections of the learned representation space for DINO vs
 
     This is also supported by the t-SNE projections comparison, which shows that DINO forms cleaner, more cohesive class clusters in semantic feature space compared to MAE:
 
-    ![t-SNE Embeddings Comparison](./saved/tsne_comparison.png)
+    ![t-SNE Embeddings Comparison](./saved/tsne_comparison_v2.png)
