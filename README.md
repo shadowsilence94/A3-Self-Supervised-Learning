@@ -1,6 +1,6 @@
 # Assignment 3: Self-Supervised Learning (SSL)
 
-This repository contains my implementation, ablation studies, and evaluation results for Assignment 3 on Self-Supervised Learning, focusing on **SimCLR**, **DINO**, and **Masked Autoencoders (MAE)**.
+This repository contains my implementation, ablation studies, and evaluation results for Assignment 3 on Self-Supervised Learning, focusing on **DINO** and **Masked Autoencoders (MAE)**.
 
 ---
 
@@ -11,13 +11,12 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 ### Performance & Ablation Summary Table
 | Model | Linear Eval Acc (%) | Time/Epoch (s) | Notes |
 | :--- | :---: | :---: | :--- |
-| **SimCLR (ResNet-18)** | 65.54 | 77.0 | Contrastive learning baseline |
-| **DINO (ViT-Tiny)** | 50.31 | 159.4 | Self-distillation (default) |
+| **DINO (Default)** | 50.31 | 159.4 | Self-distillation (default) |
 | **MAE (ViT)** | 41.37 | 22.4 | Masked Image Modeling (75% mask) |
 | **DINO (No Centering)** | 28.68 | 1026.4 | Centering ablation (Exercise 1a) |
 | **DINO (No Local Crops)** | 46.31 | 509.8 | Multi-crop ablation (Exercise 1b) |
-| **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
 | **MAE (Mask Ratio = 0.50)** | 36.50 | 73.2 | Masking ablation (Exercise 2) |
+| **MAE (Mask Ratio = 0.25)** | 36.08 | 82.8 | Masking ablation (Exercise 2) |
 
 ### MAE Masking Ablation Details
 | Mask Ratio | Recon Loss | Linear Eval Acc (%) |
@@ -33,16 +32,16 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 | **No centering (`- self.center` removed)** | 28.68 |
 | **No local crops (`n_local = 0`)** | 46.31 |
 
-### Three-Way Comparison Table
-| Metric | SimCLR | DINO | MAE |
-| :--- | :---: | :---: | :---: |
-| **Backbone** | ResNet-18 | ViT-Tiny | ViT |
-| **Needs negative pairs?** | Yes | No | No |
-| **Needs EMA teacher?** | No | Yes | No |
-| **Linear Eval Accuracy (%)** | 65.54 | 50.31 | 41.37 |
-| **Training time/epoch (s)** | 77.0 | 159.4 | 22.4 |
-| **t-SNE cluster quality (1-5)** | 4 | 5 | 3 |
-| **Has interpretable attention maps?** | No | Yes | No |
+### Two-Way Comparison Table
+| Metric | DINO | MAE |
+| :--- | :---: | :---: |
+| **Backbone** | ViT-Tiny | ViT |
+| **Needs negative pairs?** | No | No |
+| **Needs EMA teacher?** | Yes | No |
+| **Linear Eval Accuracy (%)** | 50.31 | 41.37 |
+| **Training time/epoch (s)** | 159.4 | 22.4 |
+| **t-SNE cluster quality (1-5)** | 5 | 3 |
+| **Has interpretable attention maps?** | Yes | No |
 
 ---
 
@@ -51,7 +50,7 @@ Below is the summary of my pre-training runs and downstream linear evaluation ac
 The following figures were generated automatically from my training and evaluation runs (saved in the `saved/` folder):
 
 ### Loss Curves Comparison
-Side-by-side training loss curves for SimCLR, DINO, and MAE:
+Side-by-side training loss curves for DINO and MAE:
 ![Loss Curves](./saved/loss_curves.png)
 
 ### DINO Center Norm Tracking
@@ -67,7 +66,7 @@ Self-attention maps of the `[CLS]` token from the last block of my trained DINO 
 ![DINO Attention](./saved/dino_attention_grid.png)
 
 ### t-SNE Embedding Projections
-Comparative 2D t-SNE projections of the learned representation space for all three models:
+Comparative 2D t-SNE projections of the learned representation space for DINO vs MAE:
 ![t-SNE Comparison](./saved/tsne_comparison.png)
 
 ---
@@ -75,7 +74,7 @@ Comparative 2D t-SNE projections of the learned representation space for all thr
 ## 3. Discussion & Analysis
 
 ### Exercise 1a: DINO Center Norm Analysis
-*   **DINO center norm tracking behavior:** As shown in the center norm tracking plot below, when centering is enabled (`dino`), the norm of the running teacher center vector stabilizes around 14.7, showing that it converges to a stable state that prevents teacher prediction collapse. In contrast, when centering is disabled (`dino_no_centering`), the norm stays flat at 0.0, causing the representations to collapse instantly to a constant output.
+*   **DINO center norm tracking behavior:** When centering is enabled (`dino`), the norm of the running teacher center vector stabilizes around 14.7, showing that it converges to a stable state that prevents teacher prediction collapse. In contrast, when centering is disabled (`dino_no_centering`), the norm stays flat at 0.0, causing the representations to collapse instantly to a constant output.
 
     ![DINO Center Norm Tracking](./saved/dino_center_norm.png)
 
